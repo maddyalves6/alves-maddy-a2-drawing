@@ -25,8 +25,7 @@ namespace MohawkGame2D
         ///     Update runs every frame.
         /// </summary>
         float blindsRelativePos = 0; // increments toward 20 then resets to 0 if any higher
-        float girlPosX = 100;
-        float girlPosY = 100;
+        float [] girlPos = {100, 100}; // where [0] is X and [1] is Y
         public void Update()
         {
             Window.ClearBackground(Color.Cyan);
@@ -60,12 +59,12 @@ namespace MohawkGame2D
             // draw girl at prev position, or randomize a new position if mouse is on her
             float mX = Input.GetMouseX();
             float mY = Input.GetMouseY();
-            while (mX > (girlPosX-15) && mX < (girlPosX + 15) && mY > (girlPosY - 40) && mY < (girlPosY + 30))
+            while (mX > (girlPos[0] -15) && mX < (girlPos[0] + 15) && mY > (girlPos[1] - 40) && mY < (girlPos[1] + 30))
             {
-                girlPosX = Random.Float(50, 150); // random x that keeps the girl wholly on screen
-                girlPosY = Random.Float(75, 125); // random y that keeps the girl within the bounds of the blinds
+                girlPos[0] = Random.Float(50, 150); // random x that keeps the girl wholly on screen
+                girlPos[1] = Random.Float(75, 125); // random y that keeps the girl within the bounds of the blinds
             }
-            DrawGirl(girlPosX, girlPosY);
+            DrawGirl(girlPos[0], girlPos[1]);
 
 
 
